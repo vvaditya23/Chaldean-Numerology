@@ -2,43 +2,15 @@
 //  ViewController.swift
 //  Chaldean Numerology
 //
-//  Created by Aditya Vyavahare on 15/05/24.
+//  Created by Aditya Vyavahare on 21/05/24.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
-    let numbersForAlphabets: [Character: Int] = [
-        "A": 1,
-        "B": 2,
-        "C": 3,
-        "D": 4,
-        "E": 5,
-        "F": 8,
-        "G": 3,
-        "H": 5,
-        "I": 1,
-        "J": 1,
-        "K": 2,
-        "L": 3,
-        "M": 4,
-        "N": 5,
-        "O": 7,
-        "P": 8,
-        "Q": 1,
-        "R": 2,
-        "S": 3,
-        "T": 4,
-        "U": 6,
-        "V": 6,
-        "W": 6,
-        "X": 6,
-        "Y": 1,
-        "Z": 7
-    ]
-
+    private let viewModel = ChaldeanNumerologyViewModel()
     
-    //UI elemets
+    //UI elements
     let firstnameTextField = UITextField()
     let lastnameTextField = UITextField()
     let calculateButton = UIButton()
@@ -56,7 +28,7 @@ class ViewController: UIViewController {
     }
 }
 
-//Setup UI elements
+// Setup UI elements
 extension ViewController {
     private func setupTextFields() {
         firstnameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -111,9 +83,9 @@ extension ViewController {
             totalScoreLabel.topAnchor.constraint(equalTo: lastNameScoreLabel.bottomAnchor, constant: 20),
             totalScoreLabel.centerXAnchor.constraint(equalTo: firstnameTextField.centerXAnchor),
         ])
-        firstNameScoreLabel.text = "First name score appears here"
-        lastNameScoreLabel.text = "Last name score appears here"
-        totalScoreLabel.text = "Total score appears here"
+        firstNameScoreLabel.text = viewModel.firstNameScore
+        lastNameScoreLabel.text = viewModel.lastNameScore
+        totalScoreLabel.text = viewModel.totalScore
     }
     
     private func setupImage() {
@@ -128,58 +100,17 @@ extension ViewController {
     }
 }
 
-//calculations
+// Calculations
 extension ViewController {
     @objc private func calculateButtonTapped() {
         let firstnameInput = firstnameTextField.text ?? ""
         let lastnameInput = lastnameTextField.text ?? ""
         
-        let firstnameSum = calculateChaldeanNumerology(for: firstnameInput)
-        let lastnameSum = calculateChaldeanNumerology(for: lastnameInput)
+        viewModel.calculateScores(firstName: firstnameInput, lastName: lastnameInput)
         
-        let firstnameSingleDigit = calculateSingleDigit(from: firstnameSum)
-        let lastnameSingleDigit = calculateSingleDigit(from: lastnameSum)
-        
-        firstNameScoreLabel.text = "First name score: \(firstnameSingleDigit)"
-        lastNameScoreLabel.text = "Last name score: \(lastnameSingleDigit)"
-        
-        let totalSum = firstnameSingleDigit + lastnameSingleDigit
-        
-        let totalSumSingleDigit = calculateSingleDigit(from: totalSum)
-        totalScoreLabel.text = "Total score: \(totalSumSingleDigit)"
-        
-        switch totalSumSingleDigit {
-        case 1, 3, 5, 6:
-            image.image = UIImage(named: "accepted")
-        default:
-            image.image = UIImage(named: "rejected")
-        }
-    }
-    
-    // Function to calculate Chaldean numerology count for a given string
-    private func calculateChaldeanNumerology(for input: String) -> Int {
-        var total = 0
-        for character in input.uppercased() {
-            if let value = numbersForAlphabets[character] {
-                total += value
-            }
-        }
-        return total
-    }
-
-    // Function to calculate single-digit addition
-    private func calculateSingleDigit(from number: Int) -> Int {
-        var sum = number
-        while sum > 9 {
-            sum = sum.digits.reduce(0, +)
-        }
-        return sum
-    }
-}
-
-// Extension to get digits of a number
-private extension Int {
-    var digits: [Int] {
-        return String(self).compactMap { Int(String($0)) }
+        firstNameScoreLabel.text = viewModel.firstNameScore
+        lastNameScoreLabel.text = viewModel.lastNameScore
+        totalScoreLabel.text = viewModel.totalScore
+        image.image = UIImage(named: viewModel.resultImageName)
     }
 }

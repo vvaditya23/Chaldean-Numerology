@@ -13,6 +13,8 @@
 		487BCF072BF500A8006C34DC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 487BCF062BF500A8006C34DC /* Base */; };
 		487BCF092BF500A9006C34DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487BCF082BF500A9006C34DC /* Assets.xcassets */; };
 		487BCF0C2BF500A9006C34DC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 487BCF0B2BF500A9006C34DC /* Base */; };
+		487BCF142BFCB714006C34DC /* ChaldeanNumerologyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487BCF132BFCB714006C34DC /* ChaldeanNumerologyModel.swift */; };
+		487BCF182BFCB777006C34DC /* ChaldeanNumerologyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487BCF172BFCB777006C34DC /* ChaldeanNumerologyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		487BCF082BF500A9006C34DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		487BCF0B2BF500A9006C34DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		487BCF0D2BF500A9006C34DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		487BCF132BFCB714006C34DC /* ChaldeanNumerologyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaldeanNumerologyModel.swift; sourceTree = "<group>"; };
+		487BCF172BFCB777006C34DC /* ChaldeanNumerologyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaldeanNumerologyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,39 @@
 			children = (
 				487BCEFF2BF500A8006C34DC /* AppDelegate.swift */,
 				487BCF012BF500A8006C34DC /* SceneDelegate.swift */,
-				487BCF032BF500A8006C34DC /* ViewController.swift */,
+				487BCF152BFCB743006C34DC /* Model */,
+				487BCF192BFCB7B9006C34DC /* View */,
+				487BCF162BFCB768006C34DC /* ViewModel */,
 				487BCF052BF500A8006C34DC /* Main.storyboard */,
 				487BCF082BF500A9006C34DC /* Assets.xcassets */,
 				487BCF0A2BF500A9006C34DC /* LaunchScreen.storyboard */,
 				487BCF0D2BF500A9006C34DC /* Info.plist */,
 			);
 			path = "Chaldean Numerology";
+			sourceTree = "<group>";
+		};
+		487BCF152BFCB743006C34DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				487BCF132BFCB714006C34DC /* ChaldeanNumerologyModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		487BCF162BFCB768006C34DC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				487BCF172BFCB777006C34DC /* ChaldeanNumerologyViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		487BCF192BFCB7B9006C34DC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				487BCF032BF500A8006C34DC /* ViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +169,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				487BCF042BF500A8006C34DC /* ViewController.swift in Sources */,
+				487BCF182BFCB777006C34DC /* ChaldeanNumerologyViewModel.swift in Sources */,
 				487BCF002BF500A8006C34DC /* AppDelegate.swift in Sources */,
+				487BCF142BFCB714006C34DC /* ChaldeanNumerologyModel.swift in Sources */,
 				487BCF022BF500A8006C34DC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
